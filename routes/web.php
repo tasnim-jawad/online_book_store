@@ -1,7 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,20 +18,30 @@ Route::get('admin', function () {
     return view('welcome');
 });
 
-// Route::get('/{any}', function () {
-//     return view('welcome'); // Replace 'app' with the name of your main Vue component
-//     // return "ok";
-// })->where('any', '.*');
+Route::get('/', function () {
+    // dd('jawad');
+    return view('home');
+});
+Route::get('/details', function () {
+    // dd('jawad');
+    return view('book_details');
+});
+Route::get('/login', function () {
+    // dd('jawad');
+    return view('login');
+});
+Route::get('/registration', function () {
+    // dd('jawad');
+    return view('registration');
+});
 
-// Route::get('/book', function () {
-//     return view('welcome');
+Route::resource('book', BookController::class);
+// Route::post('book', function(){
+//     dd("hi");
 // });
 
-// Route::get('backendss', function () {
-//     // dd('backend');
-//     return view('layout.backend.master');
+// Route::get('/test_book_api', function () {
+//     $responce = Http::get('https://openlibrary.org/search.json?q=web');
+//     dd($responce->json()['docs']['0']);
 // });
-// Route::get('dashboard', function () {
-//     // dd('backend');
-//     return view('admin.dashboard');
-// });
+

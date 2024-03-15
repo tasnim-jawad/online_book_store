@@ -29,11 +29,18 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
-                <a href="index.html">
+
+            <li :class="{ 'active': route_url === '/dashboard' }">
+                <router-link :to="{name:'Dashboard'}">
                     <i class="material-icons">home</i>
-                    <span>Home</span>
-                </a>
+                    <span>Dashboard</span>
+                </router-link>
+            </li>
+            <li :class="{ 'active': route_url.includes('/book') }" >
+                <router-link :to="{name:'IndexBook'}">
+                    <i class="material-icons">home</i>
+                    <span>Booklist</span>
+                </router-link>
             </li>
             <li>
                 <a href="pages/typography.html">
@@ -124,39 +131,8 @@
                     <li>
                         <a href="pages/ui/dialogs.html">Dialogs</a>
                     </li>
-                    <li>
-                        <a href="pages/ui/icons.html">Icons</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/labels.html">Labels</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/list-group.html">List Group</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/media-object.html">Media Object</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/modals.html">Modals</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/notifications.html">Notifications</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/pagination.html">Pagination</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/preloaders.html">Preloaders</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/progressbars.html">Progress Bars</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/range-sliders.html">Range Sliders</a>
-                    </li>
-                    <li>
-                        <a href="pages/ui/sortable-nestable.html">Sortable & Nestable</a>
-                    </li>
+
+
                     <li>
                         <a href="pages/ui/tabs.html">Tabs</a>
                     </li>
@@ -184,9 +160,7 @@
         </div>
         <div class="version">
             <b>Version: </b> 1.0.5
-            <p>Current URL: {{ currentUrl }}</p>
-            <p>Current URL: {{ status }}</p>
-            <p>Current URL: {{ name }}</p>
+            <p>status URL: {{ route_url }}</p>
         </div>
     </div>
     <!-- #Footer -->
@@ -199,23 +173,21 @@
 <script>
 export default {
     data() {
-        const currentUrl = window.location.href;
-        const status = currentUrl.includes('/admin/dashboard');
         return {
-            currentUrl,
-            status,
-            name:'tasnimul Hasan',
         };
     },
 
     mounted() {
-        // isAdminDashboard(){
+        // this.currentUrl = this.$route.fullPath;
+        // console.log('Current URL:', this.currentUrl);
 
-        // }
-    }
-    // computed:{
+    },
 
-    // }
+    computed: {
+        route_url() {
+            return this.$route.fullPath;;
+        },
+    },
 }
 </script>
 

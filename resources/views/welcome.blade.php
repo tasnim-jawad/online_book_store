@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Welcome To | Bootstrap Based Admin Template - Material Design</title>
@@ -21,6 +22,9 @@
 
     <!-- Animation Css -->
     <link href="{{asset('backend')}}/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- select Css-->
+    <link href="{{asset('backend')}}/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
     <link href="{{asset('backend')}}/plugins/morrisjs/morris.css" rel="stylesheet" />
@@ -53,6 +57,9 @@
     <!-- Jquery CountTo Plugin Js -->
     <script src="{{asset('backend')}}/plugins/jquery-countto/jquery.countTo.js"></script>
 
+    <!-- select Plugin Js -->
+    <script src="{{asset('backend')}}/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
     <!-- Morris Plugin Js -->
     <script src="{{asset('backend')}}/plugins/raphael/raphael.min.js"></script>
     <script src="{{asset('backend')}}/plugins/morrisjs/morris.js"></script>
@@ -72,17 +79,17 @@
 
     <!-- Custom Js -->
     <script src="{{asset('backend')}}/js/admin.js"></script>
-    {{-- <script src="{{asset('backend')}}/js/pages/index.js"></script> --}}
+    <script src="{{asset('backend')}}/js/pages/index.js"></script>
 
     <!-- Demo Js -->
     {{-- <script src="{{asset('backend')}}/js/demo.js"></script> --}}
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @vite('resources/js/app.js')
 </head>
 
 <body class="theme-red">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+    {{-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -96,7 +103,7 @@
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div> --}}
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

@@ -1,49 +1,79 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
+import App from '../App.vue'
 import Dashboard from '../pages/admin/Dashboard.vue'
-import BookList from '../pages/admin/book/BookList.vue'
-import AddBook from '../pages/admin/book/AddBook.vue'
-import EditBook from '../pages/admin/book/EditBook.vue'
+import IndexBook from '../pages/admin/book/Index.vue'
+import CreateBook from '../pages/admin/book/Create.vue'
+import EditBook from '../pages/admin/book/Edit.vue'
+import ShowBook from '../pages/admin/book/Show.vue'
+
 
 const routes = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
-        // {
-        //     name: "Dashboard",
-        //     path: '/',
-        //     component: Dashboard,
-        // },
+        {
+
+            path: '/',
+            component: App,
+            children:[
+                {
+                    name: "Dashboard",
+                    path: 'dashboard',
+                    component: Dashboard,
+                },
+                {
+                    name:'IndexBook',
+                    path: 'book/index',
+                    component: IndexBook,
+                },
+                {
+                    name:'CreateBook',
+                    path: 'book/create',
+                    component: CreateBook,
+                },
+                {
+                    name:'EditBook',
+                    path: 'book/edit',
+                    component: EditBook,
+                },
+                {
+                    name:'ShowBook',
+                    path: 'book/show',
+                    component: ShowBook,
+                },
+            ]
+        },
         // {
         //     name: "BookList",
         //     path: '/book',
         //     component: BookList,
         // },
 
-        {
-            path: '/',
-            component: Dashboard, // A layout component for the book section
-            children: [
-                {
-                    name: "Dashboard",
-                    path: '',
-                },
-                {
-                    name: "BookList",
-                    path: 'book/index',
-                    component: BookList,
-                },
-                {
-                    name: "AddBook",
-                    path: 'book/create',
-                    component: AddBook,
-                },
-                {
-                    name: "EditBook",
-                    path: 'book/edit',
-                    component: EditBook,
-                },
-            ]
-        },
+        // {
+        //     path: '/',
+        //     component: Dashboard,
+        //     children: [
+        //         {
+        //             name: "Dashboard",
+        //             path: '',
+        //         },
+        //         {
+        //             name: "BookList",
+        //             path: 'book/index',
+        //             component: BookList,
+        //         },
+        //         {
+        //             name: "AddBook",
+        //             path: 'book/create',
+        //             component: AddBook,
+        //         },
+        //         {
+        //             name: "EditBook",
+        //             path: 'book/edit',
+        //             component: EditBook,
+        //         },
+        //     ]
+        // },
     ]
 });
 
